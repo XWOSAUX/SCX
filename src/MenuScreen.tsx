@@ -1,40 +1,49 @@
-import { useState } from "react";
-import ProfileScreen from "./ProfileScreen";
+import { useState, KeyboardEvent } from "react";
+import { useNavigate } from 'react-router-dom';
+import { getFormattedDate } from "./getFormattedDate";
+import StatusBadge from './StatusBadge';
+import { useProfileStore } from './useProfileStore';
+import { useEffect } from "react";
+
 
 function MenuScreen() {
 
-  const date = new Date();
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() +1).padStart(2, '0');
-  const year = date.getFullYear();
-  const formattedDate = `${day}.${month}.${year}`;
+  const formattedDate = getFormattedDate();
 
-  const [name, setName] = useState(localStorage.getItem('scx_name') || '');
+  const navigate = useNavigate();
+
+  const { name, setName, saveName, isLoading, fetchProfile } = useProfileStore();
   const [isEditing, setIsEditing] = useState(true);
 
-  const [currentScreen, setCurrentScreen] = useState('main-menu');
-  const profileContinue = () => {
-
-  }
-
-  const handleSave = () => {
+  const handleSave = async () => {
     if (name.trim() !== '') {
       setIsEditing(false);
-      localStorage.setItem('scx_name', name);
+      await saveName();
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
     handleSave();
     }
   }
 
-  if (currentScreen === 'profile') {
-    return <ProfileScreen />;
+  
+  useEffect(() => {
+     fetchProfile();
+  }, [fetchProfile]);
+
+  // Сначала проверка
+  if (isLoading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <StatusBadge status="loading" text="Синхронизация с базой данных..." />
+      </div>
+    );
   }
 
   return (
+
       <div className="menu-screen">
 
         <div className="info-way">
@@ -62,7 +71,7 @@ function MenuScreen() {
               )}
             </div>
             <p className="date-text">Date: {formattedDate}</p>
-            <button className="btn-open-mm" onClick={() => setCurrentScreen('profile')}>open</button>
+            <button className="btn-open-mm" onClick={() => navigate('/profile')}>open</button>
           </div>
 
           <div className="chamber refuge-div">

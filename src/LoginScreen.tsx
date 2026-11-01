@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 
-function LoginScreen({ onLoginComplete }) {
+interface LoginScreenProps {
+  onLoginComplete: () => void;
+}
+
+function LoginScreen({ onLoginComplete }: LoginScreenProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const [dot1, setDot1] = useState(false);
