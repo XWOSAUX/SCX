@@ -1,21 +1,16 @@
+import './StatusBadge.css';
+
 interface StatusBadgeProps {
-    status: 'loading' | 'success' | 'error';
-    text: string;
+  status: 'loading' | 'success' | 'error';
+  text: string;
 }
 
 function StatusBadge({ status, text }: StatusBadgeProps) {
-    let color = '';
-
-    if (status === 'loading') {
-        color = 'orange';
-    } else if (status === 'success') {
-        color = 'green';
-    } else {
-        color = 'red';
-    }
+    // Формируем имя класса в зависимости от статуса
+    const className = `status-badge status-${status}`;
 
     return (
-        <span style={{ color: color, fontWeight: 'bold' }}>
+        <span className={className}>
             {text}
         </span>
     );

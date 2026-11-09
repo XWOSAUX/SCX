@@ -1,0 +1,21 @@
+.status-badge {
+  font-weight: bold;
+  font-size: 34px; /* можешь подогнать под дизайн */
+  font-family: system-ui;
+}
+
+.status-loading {
+  color: orange;
+  text-shadow: 0 0 10px rgba(255, 165, 0, 0.5); /* добавим свечение, как на скрине */
+  font-family: system-ui;
+}
+
+.status-success {
+  color: #00ff00; /* ярко-зеленый */
+  font-family: system-ui;
+}
+
+.status-error {
+  color: red;
+  font-family: system-ui;
+}

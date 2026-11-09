@@ -71,21 +71,21 @@ function MenuScreen() {
               )}
             </div>
             <p className="date-text">Date: {formattedDate}</p>
-            <button className="btn-open-mm" onClick={() => navigate('/profile')}>open</button>
+            <button className="btn-open-mm" onClick={() => navigate('/profile')}>Open</button>
           </div>
 
           <div className="chamber refuge-div">
             <p className="main-text">Refuge</p>
             <hr className="hr-sanctum-grid" />
             <p className="statistics-elements name-text">Element's: <span className="name-value">0</span></p>
-            <button className="btn-open-mm">open</button>
+            <button className="btn-open-mm">Open</button>
           </div>
 
           <div className="chamber core-div">
             <p className="main-text">Core</p>
             <hr className="hr-sanctum-grid" />
             <p className="statistics-elements name-text">Element's: <span className="name-value">0</span></p>
-            <button className="btn-open-mm">open</button>
+            <button className="btn-open-mm">Open</button>
           </div>
 
           <div className="chamber doubt-chamber-div">
@@ -94,7 +94,7 @@ function MenuScreen() {
             <p className="statistics-dh name-text">Case's: <span className="name-value">0</span></p>
             <p className="statistics-dh name-text">Solved Case's: <span className="name-value">0</span></p>
             <p className="statistics-dh name-text">In progress Case's: <span className="name-value">0</span></p>
-            <button className="btn-open-mm">open</button>
+            <button className="btn-open-mm">Open</button>
           </div>
 
         </div>
