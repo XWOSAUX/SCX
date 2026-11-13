@@ -1,0 +1,86 @@
+/* Фикс белого фона при автозаполнении */
+.login-form-container .input_profile:-webkit-autofill,
+.login-form-container .input_profile:-webkit-autofill:hover, 
+.login-form-container .input_profile:-webkit-autofill:focus, 
+.login-form-container .input_profile:-webkit-autofill:active {
+    /* Темный фон, который сливается с твоей темой (вместо белого) */
+    -webkit-box-shadow: 0 0 0 30px #1a1a24 inset !important; 
+    /* Твой голубой цвет текста */
+    -webkit-text-fill-color: rgb(149, 229, 251) !important; 
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 450px; /* Чтобы на пк форма не растягивалась на весь экран */
+  background-color: rgba(150, 150, 243, 0.042);
+  border-radius: 20px;
+  padding: 30px 50px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(1, 216, 254, 0.2);
+}
+
+/* Заголовок формы */
+.login-title {
+  text-shadow: 0px 3px 15px rgba(255, 183, 1, 0.61);
+  color: rgba(243, 255, 5, 0.786);
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: system-ui;
+  font-size: 35px;
+}
+
+/* Контейнер для кнопок */
+.login-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Стиль для кнопки переключения (вторичная) */
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-text-muted); /* Используем твой серый */
+  color: var(--color-text-muted);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* Переопределяем кнопки ТОЛЬКО на экране логина */
+.login-actions .btn-open-mm {
+  width: auto;       /* Убираем жесткую ширину 170px */
+  height: auto;      /* Убираем жесткую высоту 38px */
+  flex: 1;           /* Обе кнопки делят пространство поровну */
+  padding: 10px 15px; /* Добавляем внутренние отступы, чтобы текст дышал */
+  white-space: nowrap;
+  font-size: 20px; 
+}
+
+.login-form-container .name-text {
+    color: rgb(0, 191, 255);
+    text-shadow: 0px 3px 15px rgba(1, 255, 200, 0.244); /* ВОТ ОНО, СВЕЧЕНИЕ */
+}
+
+.login-form-container .input_profile {
+  flex: 1;          /* Растягивает инпут на все доступное место */
+  width: 100%;      /* На случай если флекс не сработает */
+  min-width: 0;     /* Важно, чтобы инпут не вылезал за границы */
+}
+
+.login-form-container .profile-controls {
+    width: 370px;
+}
+
+.input-group .input_profile {
+    color: rgb(149, 229, 251);
+}

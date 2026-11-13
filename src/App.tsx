@@ -4,6 +4,10 @@ import MenuScreen from './MenuScreen';   // <-- Добавляем импорт
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import ProfileScreen from './ProfileScreen';
 import NotFound from './NotFound';
+import RefugeScreen from './RefugeScreen';
+import RefugeCircleScreen from './RefugeCircleScreen';
+import CoreScreen from './CoreScreen';
+import CoreCircleScreen from './CoreCircleScreen';
 
 function App() {
   
@@ -44,6 +48,10 @@ function App() {
       <Route path='/menu' element={<MenuScreen />} />
       <Route path='/profile' element={<ProfileScreen />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/refuge" element={<RefugeScreen />} />
+      <Route path='/refuge/:id' element={<RefugeCircleScreen />} />
+      <Route path="/core" element={<CoreScreen />} />
+      <Route path='/core/:id' element={<CoreCircleScreen />} />
     </Routes>
 
   );

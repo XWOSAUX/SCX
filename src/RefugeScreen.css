@@ -1,0 +1,140 @@
+.refuge-page {
+  margin: 40px auto;
+  max-width: 1300px;
+  min-height: 600px;
+  padding: 20px;
+}
+
+.refuge-grid {
+  display: grid;
+  /* Делаем 5 колонок одинакового размера */
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.refuge-circle {
+  aspect-ratio: 1 / 1; /* Делает элемент идеально круглым */
+  border-radius: 50%;  /* Скругляет углы */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 40px; /* Для плюсика */
+  color: rgba(0, 217, 255, 0.5);
+  text-align: center;
+  padding: 10px; /* Чтобы текст не прилипал к краям */
+  max-width: 200px;
+  width: 100%;
+  margin: 0 auto; /* Центрируем в ячейке */
+}
+
+/* Стиль для пустого кружка (где будет плюс) */
+.refuge-circle.empty {
+  border: 2px dashed rgba(0, 217, 255, 0.3);
+  background: rgba(249, 247, 247, 0.033);
+}
+
+.refuge-circle.empty:hover {
+  background: rgba(0, 217, 255, 0.1);
+  border-color: rgba(0, 217, 255, 0.8);
+  color: rgba(0, 217, 255, 1);
+  transform: scale(1.03); /* Легкое увеличение при наведении */
+}
+
+/* Стиль для заполненного кружка */
+.refuge-circle.filled {
+  border: 2px solid rgba(211, 0, 253, 0.6); /* Фиолетовая рамка */
+  background: rgba(211, 0, 253, 0.1);
+  color: rgb(63, 200, 250);
+  font-family: system-ui;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.refuge-circle.filled:hover {
+  box-shadow: 0 0 15px rgba(211, 0, 253, 0.4);
+}
+
+/* Стиль для инпута, который появляется вместо кружка */
+.refuge-input-add {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: rgba(249, 247, 247, 0.1);
+  border: 2px solid rgba(0, 217, 255, 0.8);
+  color: rgb(28, 253, 219);
+  text-align: center;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;       /* Пусть занимает всю ширину ячейки */
+  max-width: 200px;  /* Но не больше 180px (как и кружок) */
+  min-width: 0;      /* ВАЖНО: запрещает инпуту расширяться из-за текста */
+  margin: 0 auto;    /* Чтобы стоял по центру ячейки */
+    /* ЖЕСТКИЕ ФИКСЫ: */
+  resize: none;       /* Запрещает тянуть мышкой за угол */
+  overflow: hidden;   /* Прячет скролл, если текст не влезает */
+  box-sizing: border-box;
+  
+  /* Чтобы текст был ровно по центру, а не прилипал к верху: */
+  padding: 20px;      /* Отступы со всех сторон */
+  text-align: center; /* Центр по горизонтали */
+  /* Если текст всё равно сверху, можно добавить отступ сверху: */
+  padding-top: 60px;  /* Подгони это значение под свой размер кружка */
+}
+
+.refuge-textarea {
+  width: 100%;
+  min-height: 300px;
+  max-height: 550px;
+  background: rgba(249, 247, 247, 0.033);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+  color: white;
+  font-family: system-ui;
+  font-size: 18px;
+  outline: none;
+  resize: vertical; /* Позволяет тянуть вниз */
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.refuge-textarea:focus {
+  border-color: rgba(0, 217, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+}
+
+.refuge-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Настройка скроллбара для большого текстового поля */
+.refuge-textarea::-webkit-scrollbar {
+  width: 10px; /* Делаем его чуть потоньше */
+}
+
+/* Убираем белый фон (дорожку) */
+.refuge-textarea::-webkit-scrollbar-track {
+  background: transparent; 
+  margin: 15px 0; /* Отступы сверху и снизу, чтобы не вылезал за скругленные углы */
+}
+
+/* Красим сам ползунок в твой неоновый цвет */
+.refuge-textarea::-webkit-scrollbar-thumb {
+  background: rgba(0, 217, 255, 0.3); 
+  border-radius: 10px;
+}
+
+/* Делаем ползунок ярче, когда наводишь на него мышку */
+.refuge-textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 217, 255, 0.8);
+  cursor: pointer;
+}

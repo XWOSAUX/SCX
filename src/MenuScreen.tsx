@@ -1,37 +1,27 @@
-import { useState, KeyboardEvent } from "react";
 import { useNavigate } from 'react-router-dom';
 import { getFormattedDate } from "./getFormattedDate";
 import StatusBadge from './StatusBadge';
 import { useProfileStore } from './useProfileStore';
 import { useEffect } from "react";
-
+import { useRefugeStore } from './useRefugeStore';
+import { useCoreStore } from './useCoreStore';
 
 function MenuScreen() {
-
   const formattedDate = getFormattedDate();
 
   const navigate = useNavigate();
 
-  const { name, setName, saveName, isLoading, fetchProfile } = useProfileStore();
-  const [isEditing, setIsEditing] = useState(true);
+  // name для того чтоб могли из стора доставать имя. загрузку и тд оставляем.
+  const { name, isLoading, fetchProfile } = useProfileStore();
 
-  const handleSave = async () => {
-    if (name.trim() !== '') {
-      setIsEditing(false);
-      await saveName();
-    }
-  };
+  const { nodes: refugeNodes, fetchNodes: fetchRefugeNodes } = useRefugeStore();
+  const { nodes: coreNodes, fetchNodes: fetchCoreNodes } = useCoreStore();
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-    handleSave();
-    }
-  }
-
-  
   useEffect(() => {
      fetchProfile();
-  }, [fetchProfile]);
+     fetchRefugeNodes();
+     fetchCoreNodes();
+  }, [fetchProfile, fetchRefugeNodes, fetchCoreNodes]);
 
   // Сначала проверка
   if (isLoading) {
@@ -47,28 +37,20 @@ function MenuScreen() {
       <div className="menu-screen">
 
         <div className="info-way">
-          <p className="top-text">SCX:/Main-Menu</p>
+          <p className="top-text">SCX: Pre-Alpha</p>
         </div>
         <div className="sanctum-grid">
           <div className="chamber profile-div">
             <p className="main-text">Profile</p>
             <hr className="hr-sanctum-grid" />
             <div className="container_name">
-              {isEditing ? (
-                <input
-                  type="text"
-                  className="input_profile"
-                  placeholder="Введи имя"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  onBlur={handleSave}
-                  onKeyDown={handleKeyDown}
-                />
-              ) : (
-                <p className="name-text" onClick={() => setIsEditing(true)}>
-                  Name: <span className="name-value">{name}</span>
-                </p>
-              )}
+              <p className="name-text">
+                Name: <span className="name-value">
+                  {name && name.trim() !== '' 
+                    ? name 
+                    : <span className="empty-name-prompt">Напишите имя в настройках профиля</span>}
+                </span>
+              </p>
             </div>
             <p className="date-text">Date: {formattedDate}</p>
             <button className="btn-open-mm" onClick={() => navigate('/profile')}>Open</button>
@@ -77,19 +59,19 @@ function MenuScreen() {
           <div className="chamber refuge-div">
             <p className="main-text">Refuge</p>
             <hr className="hr-sanctum-grid" />
-            <p className="statistics-elements name-text">Element's: <span className="name-value">0</span></p>
-            <button className="btn-open-mm">Open</button>
+            <p className="statistics-elements name-text">Element's: <span className="name-value">{refugeNodes.length}</span></p>
+            <button className="btn-open-mm" onClick={() => navigate('/refuge')}>Open</button>
           </div>
 
           <div className="chamber core-div">
             <p className="main-text">Core</p>
             <hr className="hr-sanctum-grid" />
-            <p className="statistics-elements name-text">Element's: <span className="name-value">0</span></p>
-            <button className="btn-open-mm">Open</button>
+            <p className="statistics-elements name-text">Element's: <span className="name-value">{coreNodes.length}</span></p>
+            <button className="btn-open-mm" onClick={() => navigate('/core')}>Open</button>
           </div>
 
           <div className="chamber doubt-chamber-div">
-            <p className="main-text">Doubt Chamber</p>
+            <p className="main-text">Doubt Chamber <span className='text-test'>(Coming next year...)</span></p>
             <hr className="hr-sanctum-grid" />
             <p className="statistics-dh name-text">Case's: <span className="name-value">0</span></p>
             <p className="statistics-dh name-text">Solved Case's: <span className="name-value">0</span></p>

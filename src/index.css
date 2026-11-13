@@ -1,8 +1,25 @@
+:root {
+  /* Твои базовые цвета */
+  --color-name-active: red;         /* Красный для имени */
+  --color-text-muted: #888;         /* Серый для плейсхолдера */
+  --color-profile-header: rgb(211, 0, 253); /* Фиолетовый для профиля */
+  --bg-main: linear-gradient(135deg, #0D0D0D, #1A0D2E); /* Градиент фона */
+}
+
+
 body {
-  background: linear-gradient(135deg, #0D0D0D, #1A0D2E);
+  background: var(--bg-main);
   margin: 0;
   padding: 0;
   height: 100vh;
+}
+
+.btn-open-mm:disabled {
+  opacity: 0.4; /* Делаем кнопку полупрозрачной */
+  cursor: not-allowed; /* Меняем курсор на "запрещено" */
+  transform: none !important; /* Убираем эффект увеличения при наведении */
+  box-shadow: none !important; /* Убираем свечение */
+  pointer-events: none; /* Полностью игнорируем клики мышкой */
 }
 
 @keyframes slideUpScale {
@@ -199,16 +216,6 @@ body {
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* Стили для анимированных точек */
-.dot {
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.dot.visible {
-  opacity: 1;
-}
-
 .test_text {
     color: white;
     font-size: 40px;
@@ -341,8 +348,16 @@ body {
   font-size: 19px;
   font-weight: 600;
   margin: 0;
+  color: white;
 }
 
 .name-value {
-  color: red; /* или любой другой, какой хочешь */
+  color: var(--color-name-active);
+}
+
+.empty-name-prompt {
+  color: var(--color-text-muted);
+  font-size: 16px;
+  font-weight: 600;
+  font-style: italic;
 }
