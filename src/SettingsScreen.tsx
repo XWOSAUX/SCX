@@ -8,11 +8,6 @@ function SettingsScreen() {
   const navigate = useNavigate();
   const { theme, setTheme } = useSettingsStore();
 
-  // Этот эффект применяет тему к HTML при загрузке
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
   return (
     <div className="profile-page">
       <div className='div-profile-header'> 

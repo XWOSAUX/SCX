@@ -9,7 +9,7 @@ interface SettingsState {
 
 export const useSettingsStore = create<SettingsState>((set) => ({
   // По умолчанию берем тему из localStorage, или ставим 'dark'
-  theme: (localStorage.getItem('scx-theme') as Theme) || 'dark',
+  theme: (localStorage.getItem('scx-theme') as Theme) || 'original',
   
   setTheme: (theme) => {
     localStorage.setItem('scx-theme', theme);

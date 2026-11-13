@@ -10,6 +10,7 @@ import CoreScreen from './CoreScreen';
 import CoreCircleScreen from './CoreCircleScreen';
 import { supabase } from './supabaseClient';
 import SettingsScreen from './SettingsScreen';
+import { useSettingsStore } from './useSettingsStore';
 
 function App() {
   
@@ -17,8 +18,12 @@ function App() {
 
   const [isExiting, setIsExiting] = useState(false);
 
-  // 1. Добавляем стейт, который запоминает, залогинен ли чел
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const { theme } = useSettingsStore();
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   // 2. Проверяем сессию в фоне при загрузке сайта
   useEffect(() => {
