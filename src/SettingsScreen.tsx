@@ -39,6 +39,8 @@ function SettingsScreen() {
       <div className="profile-footer">
         <div className="footer-left">
           <button className="btn-open-mm" onClick={() => navigate('/profile')}>back</button>
+        </div>
+        <div className="footer-right">
           <button className="btn-open-mm btn-danger" onClick={handleLogout}>Logout</button>
         </div>
       </div>

@@ -8,6 +8,7 @@
   --bg-panel: rgba(249, 247, 247, 0.033); /* Фон карточек */
   --border-panel: rgba(255, 255, 255, 0.2); /* Светлая рамка для темного фона */
   --color-accent: #ffffff;
+  --color-accent-shadow: rgba(255, 255, 255, 0.3);
 }
 
 /* ТЕМА ORIGINAL (Классический SCX) */
@@ -20,6 +21,7 @@
   --bg-panel: rgba(249, 247, 247, 0.033);
   --border-panel: rgba(0, 217, 255, 0.3); /* Твой голубой */
   --color-accent: rgba(243, 255, 5, 0.879);
+  --color-accent-shadow: rgba(243, 255, 5, 0.3);
 }
 
 /* ТЕМА LIGHT (Светлая) */
@@ -32,6 +34,7 @@
   --bg-panel: rgba(0, 0, 0, 0.501); /* Белый полупрозрачный фон для стекла */
   --border-panel: rgba(0, 0, 0, 0.303); /* Темная рамка, чтобы было видно на светлом */
   --color-accent: #333333;
+  --color-accent-shadow: rgba(0, 0, 0, 0.2);
 }
 
 
@@ -119,7 +122,7 @@ body {
     animation-duration: 2.0s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
-    text-shadow: 0px 3px 15px var(--color-accent);
+    text-shadow: 0px 3px 15px var(--color-accent-shadow);
     color: var(--color-accent);
 }
 
@@ -138,7 +141,7 @@ body {
     animation-delay: 1s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
-    text-shadow: 0px 5px 23px var(--color-accent);
+    text-shadow: 0px 5px 23px var(--color-accent-shadow);
     color: var(--color-accent);
 }
 
@@ -224,7 +227,7 @@ body {
   height: 100vh;
   font-family: system-ui, sans-serif;
   color: var(--color-primary);
-  text-shadow: 0px 3px 15px var(--color-accent);
+  text-shadow: 0px 3px 15px var(--color-accent-shadow);
 }
 
 .login-loading {
