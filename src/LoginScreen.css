@@ -27,8 +27,8 @@
 
 /* Заголовок формы */
 .login-title {
-  text-shadow: 0px 3px 15px rgba(255, 183, 1, 0.61);
-  color: var(--color-primary);
+  text-shadow: 0px 3px 15px var(--color-accent);
+  color: var(--color-accent);
   margin-bottom: 10px;
   text-align: center;
   font-family: system-ui;
