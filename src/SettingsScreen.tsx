@@ -10,6 +10,7 @@ function SettingsScreen() {
   const { theme, setTheme } = useSettingsStore();
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    localStorage.removeItem('scx-theme');
     window.location.href = '/'; // Перезагружаем страницу и выкидываем на интро
   };
 

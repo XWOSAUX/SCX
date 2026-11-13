@@ -496,11 +496,15 @@ body {
 .btn-danger {
   border-color: #ff4d4d !important;
   color: #ff4d4d !important;
-  margin-top: 20px;
   margin-left: 50px;
 }
 
 .btn-danger:hover {
   background-color: rgba(255, 77, 77, 0.1) !important;
   box-shadow: 0 0 15px rgba(255, 77, 77, 0.5) !important;
+}
+
+.profile-footer .btn-open-mm {
+  margin-top: 0;    /* Убираем авто-отступы внутри футера */
+  margin-bottom: 0; /* Убираем нижние отступы */
 }

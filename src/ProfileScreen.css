@@ -43,6 +43,7 @@
 
 .footer-left {
   justify-self: start;
+  margin-bottom: 0;
 }
 
 .footer-right {
