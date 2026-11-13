@@ -5,6 +5,8 @@
   --color-profile-header: #fff; /* Белый заголовок */
   --bg-main: linear-gradient(135deg, #0b0b0b, #121212); /* Чисто черный фон */
   --color-primary: #ffffff; /* Белые акценты */
+  --bg-panel: rgba(249, 247, 247, 0.033); /* Фон карточек */
+  --border-panel: rgba(255, 255, 255, 0.2); /* Светлая рамка для темного фона */
 }
 
 /* ТЕМА ORIGINAL (Классический SCX) */
@@ -14,15 +16,19 @@
   --color-profile-header: rgb(211, 0, 253);
   --bg-main: linear-gradient(135deg, #0D0D0D, #1A0D2E);
   --color-primary: rgb(0, 217, 255);
+  --bg-panel: rgba(249, 247, 247, 0.033);
+  --border-panel: rgba(0, 217, 255, 0.3); /* Твой голубой */
 }
 
 /* ТЕМА LIGHT (Светлая) */
 [data-theme="light"] {
-  --color-name-active: #d90000;
+  --color-name-active: #669ef3;
   --color-text-muted: #555;
-  --color-profile-header: #7a00b3;
-  --bg-main: linear-gradient(135deg, #e0e0e0, #ffffff);
-  --color-primary: #007bb5;
+  --color-profile-header: #fffafa;
+  --bg-main: linear-gradient(135deg, #6a6767, #c6d8da);
+  --color-primary: #ffffff;
+  --bg-panel: rgba(0, 0, 0, 0.501); /* Белый полупрозрачный фон для стекла */
+  --border-panel: rgba(0, 0, 0, 0.303); /* Темная рамка, чтобы было видно на светлом */
 }
 
 
@@ -271,8 +277,8 @@ body {
 }
 
 .chamber {
-  background: rgba(249, 247, 247, 0.033);
-  border: 1px solid rgba(0, 217, 255, 0.3);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-panel);
   border-radius: 16px;
   padding: 20px;
   min-height: 200px;

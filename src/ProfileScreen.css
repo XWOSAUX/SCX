@@ -5,8 +5,8 @@
 
 .profile-page {
   margin: 40px auto;
-  background: rgba(249, 247, 247, 0.033);
-  border: 1px solid rgba(0, 217, 255, 0.3);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-panel);
   border-radius: 16px;
   padding: 20px;
   min-height: 600px;
