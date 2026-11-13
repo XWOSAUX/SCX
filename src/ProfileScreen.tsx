@@ -84,7 +84,7 @@ const handleSave = async () => {
       </div>
 
       {/* Центр */}
-      <button className="btn-open-mm">Settings</button>
+      <button className="btn-open-mm" onClick={() => navigate('/settings')}>Settings</button>
 
       {/* Правая часть */}
       <div className="footer-right">

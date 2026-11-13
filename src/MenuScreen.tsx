@@ -71,7 +71,7 @@ function MenuScreen() {
           </div>
 
           <div className="chamber doubt-chamber-div">
-            <p className="main-text">Doubt Chamber <span className='text-test'>(Coming next year...)</span></p>
+            <p className="main-text">Doubt Chamber <span className='text-test'>(Coming next year...❄️)</span></p>
             <hr className="hr-sanctum-grid" />
             <p className="statistics-dh name-text">Case's: <span className="name-value">0</span></p>
             <p className="statistics-dh name-text">Solved Case's: <span className="name-value">0</span></p>

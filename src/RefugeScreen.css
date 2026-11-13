@@ -138,3 +138,32 @@
   background: rgba(0, 217, 255, 0.8);
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .refuge-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* Уменьшили отступ между кружками */
+  }
+
+  .refuge-circle {
+    max-width: 130px;
+    height: 130px; /* ЖЕСТКО фиксируем высоту */
+    font-size: 12px; /* Уменьшили шрифт */
+    padding: 10px;
+    overflow: hidden; /* Прячем всё, что вылезает за границы */
+    word-break: break-word; /* Разбиваем длинные слова */
+  }
+
+  .refuge-input-add {
+    max-width: 130px;
+    height: 130px; /* Тоже фиксируем высоту */
+    font-size: 14px;
+    padding-top: 40px; 
+  }
+
+  /* Фиксим кнопку back, чтобы она не налезала на кружки */
+  .refuge-page > .btn-open-mm {
+    margin-top: 20px; /* Задаем нормальный отступ вместо auto */
+    width: 100%; /* На всю ширину */
+  }
+}

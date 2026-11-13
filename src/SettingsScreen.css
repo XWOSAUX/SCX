@@ -1,0 +1,12 @@
+.profile-page .profile-controls {
+    display: flex;
+}
+
+.theme-buttons {
+  display: flex;
+  flex-direction: row; /* Ставит в ряд */
+  flex-wrap: wrap;     /* Разрешает переносить на новую строку, если не влезают */
+  gap: 20px;
+  margin-top: 35px;
+  justify-content: center; /* Центрирует кнопки */
+}

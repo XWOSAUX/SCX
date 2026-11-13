@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRefugeStore } from './useRefugeStore';
 import { useState } from 'react';
 import './RefugeScreen.css';
+import StatusBadge from './StatusBadge';
 
 function RefugeScreen() {
   const navigate = useNavigate();
@@ -17,8 +18,12 @@ function RefugeScreen() {
   }, [fetchNodes]);
 
   if (isLoading) {
-    return <div style={{ color: 'white', textAlign: 'center', marginTop: '50px' }}>Загрузка убежища...</div>;
-  }
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <StatusBadge status="loading" text="Синхронизация Refuge..." />
+    </div>
+  );
+}
 
   const handleAddNode = async () => {
     // Если пусто, уже 10 штук или ИДЕТ ОТПРАВКА — ничего не делаем

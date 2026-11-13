@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import LoginScreen from './LoginScreen'; // <-- Добавляем импорт
-import MenuScreen from './MenuScreen';   // <-- Добавляем импорт
+import { useState, useEffect } from 'react';
+import LoginScreen from './LoginScreen';
+import MenuScreen from './MenuScreen';  
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import ProfileScreen from './ProfileScreen';
 import NotFound from './NotFound';
@@ -8,6 +8,8 @@ import RefugeScreen from './RefugeScreen';
 import RefugeCircleScreen from './RefugeCircleScreen';
 import CoreScreen from './CoreScreen';
 import CoreCircleScreen from './CoreCircleScreen';
+import { supabase } from './supabaseClient';
+import SettingsScreen from './SettingsScreen';
 
 function App() {
   
@@ -15,18 +17,36 @@ function App() {
 
   const [isExiting, setIsExiting] = useState(false);
 
+  // 1. Добавляем стейт, который запоминает, залогинен ли чел
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // 2. Проверяем сессию в фоне при загрузке сайта
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setIsAuthenticated(!!session); // если сессия есть - true, если нет - false
+    });
+  }, []);
+
   const handleContinue = () => {
     setIsExiting(true); 
     setTimeout(() => {
-      navigate('/login');
+      // Если авторизован — в меню. Если нет — на логин.
+      if (isAuthenticated) {
+        navigate('/menu');
+      } else {
+        navigate('/login');
+      }
       setIsExiting(false);
     }, 500);
   };
 
   
   const handleLoginComplete = () => {
+    setIsAuthenticated(true); // Когда юзер вошел, обновляем стейт
     navigate('/menu');
   };
+
+  
 
   return (
     
@@ -52,6 +72,7 @@ function App() {
       <Route path='/refuge/:id' element={<RefugeCircleScreen />} />
       <Route path="/core" element={<CoreScreen />} />
       <Route path='/core/:id' element={<CoreCircleScreen />} />
+      <Route path='/settings' element={<SettingsScreen />} />
     </Routes>
 
   );
