@@ -1,6 +1,6 @@
 .text-test {
   font-style: italic;
-  color: rgba(0, 202, 253, 0.411);
+  color: var(--color-text-muted);
 }
 
 .profile-page {

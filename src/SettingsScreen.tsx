@@ -1,12 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { useSettingsStore } from './useSettingsStore';
 import { useEffect } from 'react';
-import './ProfileScreen.css'; // Используем стили профиля для рамки
+import { supabase } from './supabaseClient';
+import './ProfileScreen.css';
 import './SettingsScreen.css';
 
 function SettingsScreen() {
   const navigate = useNavigate();
   const { theme, setTheme } = useSettingsStore();
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    window.location.href = '/'; // Перезагружаем страницу и выкидываем на интро
+  };
 
   return (
     <div className="profile-page">
@@ -34,6 +39,7 @@ function SettingsScreen() {
       <div className="profile-footer">
         <div className="footer-left">
           <button className="btn-open-mm" onClick={() => navigate('/profile')}>back</button>
+          <button className="btn-open-mm btn-danger" onClick={handleLogout}>Logout</button>
         </div>
       </div>
     </div>

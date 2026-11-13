@@ -28,7 +28,7 @@
 /* Заголовок формы */
 .login-title {
   text-shadow: 0px 3px 15px rgba(255, 183, 1, 0.61);
-  color: rgba(243, 255, 5, 0.786);
+  color: var(--color-primary);
   margin-bottom: 10px;
   text-align: center;
   font-family: system-ui;
@@ -67,7 +67,7 @@
 }
 
 .login-form-container .name-text {
-    color: rgb(0, 191, 255);
+    color: var(--color-primary);
     text-shadow: 0px 3px 15px rgba(1, 255, 200, 0.244); /* ВОТ ОНО, СВЕЧЕНИЕ */
 }
 
@@ -82,5 +82,5 @@
 }
 
 .input-group .input_profile {
-    color: rgb(149, 229, 251);
+    color: var(--color-primary);
 }
